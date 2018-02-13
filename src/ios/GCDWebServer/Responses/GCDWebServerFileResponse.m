@@ -1,7 +1,7 @@
 /*
  Copyright (c) 2012-2015, Pierre-Olivier Latour
  All rights reserved.
- 
+
  Redistribution and use in source and binary forms, with or without
  modification, are permitted provided that the following conditions are met:
  * Redistributions of source code must retain the above copyright
@@ -12,7 +12,7 @@
  * The name of Pierre-Olivier Latour may not be used to endorse
  or promote products derived from this software without specific
  prior written permission.
- 
+
  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -131,8 +131,8 @@ static inline NSDate* _NSDateFromTimeSpec(const struct timespec* t) {
 
     self.contentType = GCDWebServerGetMimeTypeForExtension([_path pathExtension], overrides);
     self.contentLength = _size;
-    self.lastModifiedDate = _NSDateFromTimeSpec(&info.st_mtimespec);
-    self.eTag = [NSString stringWithFormat:@"%llu/%li/%li", info.st_ino, info.st_mtimespec.tv_sec, info.st_mtimespec.tv_nsec];
+    self.lastModifiedDate = [NSDate date];
+    self.eTag = [[NSProcessInfo processInfo] globallyUniqueString];
   }
   return self;
 }
